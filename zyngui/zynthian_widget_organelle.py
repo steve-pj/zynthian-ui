@@ -511,7 +511,7 @@ class zynthian_widget_organelle(zynthian_widget_base):
                 return False
 
     def handle_led(self, path, args):
-        logging.debug(f"Received OSC LED message: {path} {args}")
+        #logging.debug(f"Received OSC LED message: {path} {args}")
         if args:
             state = int(args[0])
             self.led_indicator.set_state(state)
