@@ -66,7 +66,7 @@ from zyngine.ctrldev.zynthian_ctrldev_base import zynthian_ctrldev_zynmixer
 # TODO Fix retention of vol, pan, etc values in mixer and chain modes - working except for select but Chain mode not and broken again. - Chain Mode currently not borked as much
 # TODO Device mode - can rotary pots be used in place of encoders? If we can get the current value might be able to work out some maths as a fudge?
 # TODO Get device parameter names ie Resonance, Cutoff, etc. Close to working, but code needs cleaning and theres some corruption of the display- whats causing this, is it drive code or sysex implementation
-#       Does this come from a JALV file, how do we know which 4 paramerts are active, avoid using midi learn if possible. Intially working but up down button to select groups isnt working properly on KEYSTAGE but is on GUI
+# TODO Does this come from a JALV file, how do we know which 4 paramerts are active, avoid using midi learn if possible. Intially working but up down button to select groups isnt working properly on KEYSTAGE but is on GUI
 # TODO If we can get the above completed clean up the CODE!!! before progressing further!
 
 class zynthian_ctrldev_korg_keystage61(zynthian_ctrldev_zynmixer):
