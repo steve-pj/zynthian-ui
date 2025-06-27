@@ -50,23 +50,23 @@ from zyngine.ctrldev.zynthian_ctrldev_base import zynthian_ctrldev_zynmixer
 # In Native mode all Knob CCnums are fixed (0 -7)
 # Exit button disables/enables Native mode, all CCs can be selected, but display cannot be controlled (I think! need to check this)
 # Tranport should work as per NanoKontrol2 driver (ie cycle button activates shift)
-# There are 7 'Modes' selectable by the big knob (this is the only encoder), Chain, Volume, Pan, Mute, Solo, Active Chain, Device.
+# There are 8 'Modes' selectable by the big knob (this is the only encoder), Chain, Volume, Pan, Mute, Solo, Active Chain, ZynthianUI and Device.
 # Mode is displayed on top right of Main Display
-# Chain displays paramters for the first channel ie Chain Name, Volume, Pan, Mute, Solo, Active, but does nothing else - Need to add control and proper refresh.
+# Chain displays parameters for the first channel ie Chain Name, Volume, Pan, Mute, Solo, Active.
 
-# Volume, Pan, Mute, Solo, Active display the values for each mixer channel. 
-# The knobs change the value on Zynthian and the Keystage, but values are not retained on KS display - to fix
+# Volume, Pan, Mute, Solo, Active display the values for each mixer channel (if audio)
+# The knobs change the value on Zynthian and the Keystage, but values are not always retained on KS display - Review this as it might be working now
 
-# Device swaps to device mode. Knobs call ZYNPOT CUIA but as they're rotary pots rather than encoders don't work as intended yet - Need to fix this
-# Zyncoder parameters or vlues are not displayed on Keystage
+# Device swaps to device mode. Knobs call ZYNPOT CUIA but as they're rotary pots rather than encoders work using 'pick-up mode' - Mostly works, but could do with improving especially at extremes
+# Zyncoder parameters or values are not displayed on Keystage in ZynthianUI mode - Not sure how useful this is - does appear to change on screen values if a chain is selected without triggering 'Device mode'
 
 # TODO Display Current Snapshot on center of Main display - may decide to change this later though
 # TODO Fix mode selection - Looks like the may be a better way of doing this loking at other driver code.
 # TODO Get Chain Mode to actually do something. Needs to display 'Active Chain' not first and paramerts to be changed via appropriate knob. - ACTIVE CHAIN DISPLAY Working exept for arm
 # TODO Fix retention of vol, pan, etc values in mixer and chain modes - working except for select but Chain mode not and broken again. - Chain Mode currently not borked as much
-# TODO Device mode - can rotary pots be used in place of encoders? If we can get the current value might be able to work out some maths as a fudge?
+# TODO Device mode - can rotary pots be used in place of encoders? If we can get the current value might be able to work out some maths as a fudge? FIXED - Mostly working in pickup mode now.
 # TODO Get device parameter names ie Resonance, Cutoff, etc. Close to working, but code needs cleaning and theres some corruption of the display- whats causing this, is it drive code or sysex implementation
-# TODO Does this come from a JALV file, how do we know which 4 paramerts are active, avoid using midi learn if possible. Intially working but up down button to select groups isnt working properly on KEYSTAGE but is on GUI
+# TODO Does this come from a JALV file, how do we know which 4 paramerts are active, avoid using midi learn if possible. Intially working but up down button to select groups isnt always working properly on KEYSTAGE but is on GUI - fudged a fix using a short sleep before updating the display.
 # TODO If we can get the above completed clean up the CODE!!! before progressing further!
 
 class zynthian_ctrldev_korg_keystage61(zynthian_ctrldev_zynmixer):
